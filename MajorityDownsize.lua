@@ -2,7 +2,7 @@ local spr = app.activeSprite
 if not spr then return app.alert "No active sprite" end
 if not spr.colorMode == ColorMode.RGB then return app.alert "Color mode must be RGB" end
 
-local dlg = Dialog("Majority downsize weighted")
+local dlg = Dialog("Majority downsize")
 dlg:entry{ id="downsize", label="Downsize", text="0", focus=true }
    :entry{ id="invisibleFactor", label="InvisibleFactor", text="1"}
    :button{ id="ok", text="OK", focus=true }
@@ -39,11 +39,7 @@ if data.ok then
                             -- Get the color of the pixel
                             local color = imgInput:getPixel(chunkX, chunkY)
 
-                            --find the number to add to the count
-                            local weight = chunkYTrue+1
-                            if downsizeI-chunkYTrue < weight then weight = downsizeI-chunkYTrue end
-                            if downsizeI-chunkXTrue < weight then weight = downsizeI-chunkXTrue end
-                            if chunkXTrue+1 < weight then weight = chunkXTrue+1 end
+                            local weight = 1
 
                             --apply invisible multiplyer
                             if app.pixelColor.rgbaA(color) == 0 then 
