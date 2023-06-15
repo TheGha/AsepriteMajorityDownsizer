@@ -9,3 +9,10 @@ In the latest version it also changes the canvas size for convinience sake
 The InvisibleFactor takes a multiplier that is affects the pixels with alpha 0.<br>
 A InvisibleFactor of 0 would make a invisible pixel never happen in a chunk (unless there is no other candidate), and a factor of 1 would make em as valuable as normal.<br>
 You can tweek it to be something like 0.5 if you want small details sticking out to be better preserved.
+
+The weighted version makes the pixels closer to the center of a chunk worth more, the weight each pixel gets is increased by 1 for each pixel away from the edge of a chunk, for example the weight of each pixel becomes likee this in a 5x5 chunk:<br>
+11111<br>
+12221<br>
+12321<br>
+12221<br>
+11111
